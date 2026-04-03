@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    .dashboard-card {
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      color: white;
+    }
+    .dashboard-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .dashboard-number {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .carousel {
+  margin-top: 0;
+  margin-bottom: 20px; /* Adds space after carousel */
+}
+
+.carousel-img {
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 10px; /* Adds space under each image */
+}
+
+  </style>
+</head>
+<script>
+  // Automatically update Total Teachers count
+  document.addEventListener("DOMContentLoaded", function() {
+    const teachers = JSON.parse(localStorage.getItem('teachers')) || [];
+    document.getElementById('teacherCount').innerText = teachers.length;
+  });
+  </script>  
+<body>
+<div class="container-fluid">
+  <div class="row" style="height: 100vh">
+    <div class="col-2 col-sm-3 col-xl-2 bg-dark">
+      <nav class="navbar bg-dark border-bottom border-white mb-3" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <i class="bi bi-house-check-fill"></i><span class="d-none d-sm-inline ms-2">EDUCARE</span>
+          </a>
+        </div>
+      </nav>
+      <nav class="nav flex-column">
+        <a class="nav-link text-white" href="dashboard.html">
+          <i class="bi bi-bank2"></i><span class="d-none d-sm-inline ms-2">DASHBOARD</span>
+        </a>
+        <a class="nav-link text-white" href="Students.html">
+          <i class="bi bi-person-arms-up"></i><span class="d-none d-sm-inline ms-2">STUDENT</span>
+        </a>
+        <a class="nav-link text-white" href="teacher.html">
+          <i class="bi bi-person-gear"></i><span class="d-none d-sm-inline ms-2">TEACHER</span>
+        </a>
+        <a class="nav-link text-white" href="table.html">
+          <i class="bi bi-book"></i><span class="d-none d-sm-inline ms-2">COURSE</span>
+        </a>
+        <a class="nav-link text-white" href="List.html">
+          <i class="bi bi-building"></i><span class="d-none d-sm-inline ms-2">CLASSROOM</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="col-10 col-sm-9 col-xl-10 p-0 m-0">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+        <div class="container-fluid">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="Login.html"><i class="bi bi-arrow-bar-right me-2"></i>Logout</a>
+                </li>
+              </ul>              
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="px-3">
+        <h1 class="mb-4">Welcome to Dashboard!</h1>
+
+        <!-- Image Slideshow -->
+<div id="dashboardCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://courseweb.sliit.lk/pluginfile.php/1/theme_lambda/slide1image/1736872561/Slide01.png" class="d-block w-100 carousel-img" alt="Slide 1">
+    </div>
+    <div class="carousel-item">
+      <img src="https://courseweb.sliit.lk/pluginfile.php/1/theme_lambda/slide3image/1736872561/Slide02.png" class="d-block w-100 carousel-img" alt="Slide 2">
+    </div>
+    <div class="carousel-item">
+      <img src="https://courseweb.sliit.lk/pluginfile.php/1/theme_lambda/slide4image/1736872561/Slide03.png" class="d-block w-100 carousel-img" alt="Slide 3">
+    </div>
+    <div class="carousel-item">
+      <img src="https://courseweb.sliit.lk/pluginfile.php/1/theme_lambda/slide5image/1736872561/Slide04.png" class="d-block w-100 carousel-img" alt="Slide 4">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#dashboardCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#dashboardCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+        <!-- Dashboard Cards -->
+        <div class="row g-3">
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="dashboard-card bg-primary">
+              <i class="bi bi-person-gear dashboard-icon"></i>
+              <div>Total Teachers</div>
+              <div class="dashboard-number" id="teacherCount">0</div> 
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="dashboard-card bg-success">
+              <i class="bi bi-person-arms-up dashboard-icon"></i>
+              <div>Total Students</div>
+              <div class="dashboard-number">5</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="dashboard-card bg-warning">
+              <i class="bi bi-building dashboard-icon"></i>
+              <div>Total Classes</div>
+              <div class="dashboard-number">10</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="dashboard-card bg-info">
+              <i class="bi bi-book dashboard-icon"></i>
+              <div>Total Courses</div>
+              <div class="dashboard-number">8</div>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const currentPath = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+      const linkPath = link.getAttribute('href');
+      if (linkPath === currentPath) {
+        link.classList.add('active');
+        link.style.backgroundColor = '#198754'; // Green background for active link
+        link.style.borderRadius = '8px';
+      }
+    });
+  });
+</script>
+</body>
+</html>
